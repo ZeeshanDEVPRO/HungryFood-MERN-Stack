@@ -5,6 +5,7 @@ import {  useNavigate } from 'react-router-dom'
 const PartnerLogin = ({ onClose,setShowPartner}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -16,6 +17,7 @@ const PartnerLogin = ({ onClose,setShowPartner}) => {
 
 
   const handleLogin = async () => {
+    setLoading(true);
     event.preventDefault();
     console.warn(email, password);
     let result = await fetch(`http://localhost:5000/login`,{
@@ -31,10 +33,13 @@ const PartnerLogin = ({ onClose,setShowPartner}) => {
         localStorage.setItem("partner",JSON.stringify(result.user));
         localStorage.setItem("token",JSON.stringify(result.auth));
         setShowPartner(false);
-        navigate('/partner');
+        document.body.style.overflow = 'auto';
+        setLoading(false);
+        window.location = "/partner";
     }
     else{
-        alert('please enter correct details')
+        console.warn('error');
+        setLoading(false);
     }
 }
 
@@ -58,7 +63,8 @@ const direct = () =>{
             <form>
               <input type='email' placeholder='Email ' required value={email} onChange={(e) => setEmail(e.target.value)} />
               <input type='password' placeholder='Password' required value={password} onChange={(e) => setPassword(e.target.value)} />
-              <button id='sign' onClick={handleLogin}>Sign In</button>
+              
+              {loading ? <button id='sign' disabled>Signing In...</button> : <button id='sign' onClick={handleLogin}>Sign In</button>}
               <div className="or">
                 <h1>OR</h1>
                 <button className='google'><img src='https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png' /><div>Sign In with Google</div></button>

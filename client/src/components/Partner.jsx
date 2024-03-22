@@ -30,8 +30,13 @@ const Partner = () => {
   const updateinputFileRef = useRef(null);
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    const auth = localStorage.getItem('partner');
+    if (!auth) {
+      window.location.href = '/home';
+    } else {
+      fetchProducts();
+    }
+  }, [localStorage.getItem('partner')]);
 
   const addhandleFileChange = (files) => {
     if (files.length > 0) {
@@ -312,19 +317,19 @@ const Partner = () => {
         transition: Bounce,
       });
       console.error('Error uploading product:', error);
-     
+
     }
   };
 
   const handleCloseModal = () => {
     setShowProfile(false);
-    document.body.style.overflow = 'auto';
+    // document.body.style.overflow = 'auto';
   };
 
-  const handleProfileClick=()=>{
+  const handleProfileClick = () => {
     setShowProfile(true);
-    document.body.style.overflow = 'hidden';
-}
+    // document.body.style.overflow = 'hidden';
+  }
 
 
   return (

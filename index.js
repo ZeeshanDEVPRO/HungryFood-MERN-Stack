@@ -19,7 +19,6 @@ cloudinary.config({
 
 const Jwt = require('jsonwebtoken');
 const jwtkey = 'yummyfood';
-
 app.use(express.json());
 const corsOptions = {
     origin: 'http://localhost:5173',

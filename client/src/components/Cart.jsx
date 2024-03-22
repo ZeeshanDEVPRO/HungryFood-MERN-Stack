@@ -34,8 +34,13 @@ const Cart = () => {
 
     const navigate = useNavigate();
     useEffect(() => {
-        fetchProducts();
-    }, []);
+        const auth = localStorage.getItem('user');
+        if (!auth) {
+          window.location.href = '/home';
+        } else {
+          fetchProducts();
+        }
+      }, [localStorage.getItem('user')]);
 
     const handleCheckboxChange = (value) => {
         setSelectedOption(value);

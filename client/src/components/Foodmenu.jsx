@@ -18,8 +18,13 @@ const Foodmenu = () => {
   }, []);
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    const auth = localStorage.getItem('user');
+    if (!auth) {
+      window.location.href = '/home';
+    } else {
+      fetchProducts();
+    }
+  }, [localStorage.getItem('user')]);
 
   const handleButtonClick = (value) => {
     setActiveButton(value);

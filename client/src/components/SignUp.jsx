@@ -6,6 +6,7 @@ const SignUp = ({ onClose, setShowLogin, setShowSignUp }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const SignUp = ({ onClose, setShowLogin, setShowSignUp }) => {
   }
 
   const collectData = async () => {
+    setLoading(true);
     let type = 'user';
     event.preventDefault();
     try {
@@ -38,11 +40,14 @@ const SignUp = ({ onClose, setShowLogin, setShowSignUp }) => {
         localStorage.setItem('user', JSON.stringify(result.result));
         localStorage.setItem('token', JSON.stringify(result.auth));
         setShowSignUp(false);
-        navigate('/');
+        setLoading(false);
+        window.location = "/";
       } else {
         console.warn('error');
+        setLoading(false);
       }
     } catch (e) {
+      setLoading(false);
       console.log(e);
     }
   };
@@ -64,7 +69,9 @@ const SignUp = ({ onClose, setShowLogin, setShowSignUp }) => {
                 <input type='text' placeholder='Name' className='num' value={name} onChange={(e) => { setName(e.target.value) }} required />
                 <input type='email' placeholder='Email' value={email} onChange={(e) => { setEmail(e.target.value) }} required />
                 <input type='password' placeholder='Password' value={password} onChange={(e) => { setPassword(e.target.value) }} required />
-                <button id='sign' onClick={collectData}>Sign Up</button>
+
+                {loading ? (<button id ='sign' disabled>Signing Up...</button>):
+                (<button id='sign' onClick={collectData}>Sign Up</button>)}
                 <div className="or">
                   <h1>OR</h1>
                   <div className='google'><img src='https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png' /><div>Sign Up with Google</div></div>
