@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('./db/config');
 const bcrypt = require('bcrypt');
-
+const PORT = process.env.PORT || 5000;
 const User = require('./db/User');
 const Product = require('./db/Product');
 const DummyProduct = require('./db/DummyProduct');
@@ -256,4 +256,4 @@ app.put("/update/:id", async (req, res) => {
     }
 });
 
-app.listen(5000);
+app.listen(PORT);
