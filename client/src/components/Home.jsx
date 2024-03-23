@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Nav from "./Nav";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios'
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -17,15 +16,18 @@ const Home = () => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const type = "product"; 
-      const url = `https://hungry-food-backend-b1t5.vercel.app/allproducts?type=${type}`;
+      const url = new URL(`https://hungry-food-backend-b1t5.vercel.app/allproducts`);
+      url.searchParams.append("type", type);
   
-      const response = await axios.get(url, {
+      const response = await fetch(url, {
+        method: "GET",
         headers: {
           Authorization: token,
         },
       });
   
-      setProducts(response.data);
+      const data = await response.json();
+      setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -37,15 +39,18 @@ const Home = () => {
     setSearchTerm(key);
     if (key) {
       try {
-        const url = `https://hungry-food-backend-b1t5.vercel.app/search/${key}?type=${type}`;
+        const url = new URL(`https://hungry-food-backend-b1t5.vercel.app/search/${key}`);
+        url.searchParams.append("type", type);
   
-        const response = await axios.get(url, {
+        const response = await fetch(url, {
+          method: "GET",
           headers: {
             "Content-Type": "application/json", 
           },
         });
         
-        setProducts(response.data);
+        const searchData = await response.json();
+        setProducts(searchData);
       } catch (error) {
         console.error("Error searching products:", error);
       }
