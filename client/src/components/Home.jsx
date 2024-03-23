@@ -16,7 +16,7 @@ const Home = () => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const type = "product"; 
-      const url = new URL(`https://hungry-food-mern-stack.vercel.app/allproducts`);
+      const url = new URL(`https://hungry-food-backend-b1t5.vercel.app/allproducts`);
       url.searchParams.append("type", type);
   
       const response = await fetch(url, {
