@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Nav from "./Nav";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios'
 
 const Home = () => {
   const [products, setProducts] = useState([]);
