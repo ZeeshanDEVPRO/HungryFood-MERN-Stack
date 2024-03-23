@@ -16,18 +16,15 @@ const Home = () => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const type = "product"; 
-      const url = new URL(`https://hungry-food-backend-b1t5.vercel.app/allproducts`);
-      url.searchParams.append("type", type);
+      const url = `https://hungry-food-backend-b1t5.vercel.app/allproducts?type=${type}`;
   
-      const response = await fetch(url, {
-        method: "GET",
+      const response = await axios.get(url, {
         headers: {
           Authorization: token,
         },
       });
   
-      const data = await response.json();
-      setProducts(data);
+      setProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -39,18 +36,15 @@ const Home = () => {
     setSearchTerm(key);
     if (key) {
       try {
-        const url = new URL(`https://hungry-food-backend-b1t5.vercel.app/search/${key}`);
-        url.searchParams.append("type", type);
+        const url = `https://hungry-food-backend-b1t5.vercel.app/search/${key}?type=${type}`;
   
-        const response = await fetch(url, {
-          method: "GET",
+        const response = await axios.get(url, {
           headers: {
             "Content-Type": "application/json", 
           },
         });
         
-        const searchData = await response.json();
-        setProducts(searchData);
+        setProducts(response.data);
       } catch (error) {
         console.error("Error searching products:", error);
       }
