@@ -23,7 +23,9 @@ const jwtkey = 'yummyfood';
 app.use(express.json());
 const corsOptions = {
     origin: 'https://hungry-food-mern-stack-g4mp.vercel.app',
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
+    credentials: true
+    
 };
 
 app.use(cors(corsOptions));
