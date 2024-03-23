@@ -13,9 +13,9 @@ const cloudinary = require('cloudinary').v2;
 require('dotenv').config()
 
 cloudinary.config({
-    cloud_name: process.env.CLOUDNAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
+    cloud_name: "dlknzbptz",
+    api_key:"258333159144375" ,
+    api_secret:"k_t1t5GRkaWupsI50EYc4I7RLOw" 
 });
 
 const Jwt = require('jsonwebtoken');
