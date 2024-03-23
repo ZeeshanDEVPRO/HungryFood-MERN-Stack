@@ -10,7 +10,7 @@ const Partner = require('./db/Partner');
 const app = express();
 const fileUpload = require('express-fileupload');
 const cloudinary = require('cloudinary').v2;
-require('dotenv').config();
+require('dotenv').config()
 
 cloudinary.config({
     cloud_name: process.env.CLOUDNAME,
