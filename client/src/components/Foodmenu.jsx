@@ -40,7 +40,7 @@ const Foodmenu = () => {
   const fetchProducts = async () => {
     try {
       const type = "product";
-      const url = new URL(`https://hungry-food-mern-stack.vercel.app/allproducts`);
+      const url = new URL(`https://hungry-food-backend-b1t5.vercel.app/allproducts`);
       url.searchParams.append("type", type);
 
       const response = await fetch(url, {
@@ -60,7 +60,7 @@ const Foodmenu = () => {
     setSearchTerm(key);
     if (key) {
       try {
-        const url = new URL(`https://hungry-food-mern-stack.vercel.app/search/${key}`);
+        const url = new URL(`https://hungry-food-backend-b1t5.vercel.app/search/${key}`);
         url.searchParams.append("type", type);
 
         const response = await fetch(url, {

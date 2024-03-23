@@ -271,7 +271,7 @@ const Partner = () => {
     formData.append('photo', addformData.photo);
 
     try {
-      const result = await fetch(`https://hungry-food-mern-stack.vercel.app/upload`, {
+      const result = await fetch(`https://hungry-food-backend-b1t5.vercel.app/upload`, {
         method: 'POST',
         body: formData,
       });

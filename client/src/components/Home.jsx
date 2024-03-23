@@ -39,7 +39,7 @@ const Home = () => {
     setSearchTerm(key);
     if (key) {
       try {
-        const url = new URL(`https://hungry-food-mern-stack.vercel.app/search/${key}`);
+        const url = new URL(`https://hungry-food-backend-b1t5.vercel.app/search/${key}`);
         url.searchParams.append("type", type);
   
         const response = await fetch(url, {
