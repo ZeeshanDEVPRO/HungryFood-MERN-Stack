@@ -22,7 +22,7 @@ const Jwt = require('jsonwebtoken');
 const jwtkey = 'yummyfood';
 app.use(express.json());
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'https://hungry-food-mern-stack-g4mp.vercel.app',
     optionsSuccessStatus: 200
 };
 
