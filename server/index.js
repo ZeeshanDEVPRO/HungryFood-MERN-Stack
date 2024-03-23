@@ -10,11 +10,12 @@ const Partner = require('./db/Partner');
 const app = express();
 const fileUpload = require('express-fileupload');
 const cloudinary = require('cloudinary').v2;
+require('dotenv').config();
 
 cloudinary.config({
-    cloud_name: 'dlknzbptz',
-    api_key: '258333159144375',
-    api_secret: 'k_t1t5GRkaWupsI50EYc4I7RLOw'
+    cloud_name: process.env.CLOUDNAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
 });
 
 const Jwt = require('jsonwebtoken');
