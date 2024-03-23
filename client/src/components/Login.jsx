@@ -24,7 +24,7 @@ const Login = ({ onClose, setShowLogin, setShowSignUp }) => {
     setLoading(true);
     event.preventDefault();
     try {
-      let result = await fetch(`http://localhost:5000/login`, {
+      let result = await fetch(`https://hungry-food-backend.onrender.com`, {
         method: 'post',
         body: JSON.stringify({ email, password }),
         headers: {
