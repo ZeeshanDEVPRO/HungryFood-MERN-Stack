@@ -26,7 +26,7 @@ const SignUp = ({ onClose, setShowLogin, setShowSignUp }) => {
     let type = 'user';
     event.preventDefault();
     try {
-      let result = await fetch(`https://hungry-food-backend-b1t5.vercel.apps/register`, {
+      let result = await fetch(`https://hungry-food-mern-stack-g4mp.vercel.app/register`, {
         method: 'post',
         body: JSON.stringify({ name, email, password, type }),
         headers: {

@@ -33,9 +33,7 @@ app.use(fileUpload({
     useTempFiles: true
 }));
 
-app.get('/',(req,res)=>{
-    res.send("server is running")
-})
+
 
 //signup api
 app.post('/register', async (req, resp) => {
