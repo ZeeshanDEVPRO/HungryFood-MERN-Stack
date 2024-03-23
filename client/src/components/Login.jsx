@@ -24,7 +24,7 @@ const Login = ({ onClose, setShowLogin, setShowSignUp }) => {
     setLoading(true);
     event.preventDefault();
     try {
-      let result = await fetch(`https://hungry-food-backend.onrender.com`, {
+      let result = await fetch(`https://hungry-food-mern-stack.vercel.app/login`, {
         method: 'post',
         body: JSON.stringify({ email, password }),
         headers: {
