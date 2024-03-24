@@ -16,7 +16,7 @@ const Home = () => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const type = "product"; 
-      const url = new URL(`https://hungry-food-mern-stack-g4mp.vercel.app/allproducts`);
+      const url = new URL(`https://hungry-food-backend.vercel.app/allproducts`);
       url.searchParams.append("type", type);
   
       const response = await fetch(url, {
@@ -39,7 +39,7 @@ const Home = () => {
     setSearchTerm(key);
     if (key) {
       try {
-        const url = new URL(`https://hungry-food-mern-stack-g4mp.vercel.app/search/${key}`);
+        const url = new URL(`https://hungry-food-backend.vercel.app/search/${key}`);
         url.searchParams.append("type", type);
   
         const response = await fetch(url, {

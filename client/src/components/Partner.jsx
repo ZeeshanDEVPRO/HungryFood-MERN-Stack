@@ -87,7 +87,7 @@ const Partner = () => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const type = "dummyProduct";
-      const url = new URL(`https://hungry-food-mern-stack-g4mp.vercel.app/allproducts`);
+      const url = new URL(`https://hungry-food-backend.vercel.app/allproducts`);
       url.searchParams.append("type", type);
 
       const response = await fetch(url, {
@@ -110,7 +110,7 @@ const Partner = () => {
     setSearchTerm(key);
     if (key) {
       try {
-        const url = new URL(`https://hungry-food-mern-stack-g4mp.vercel.app/search/${key}`);
+        const url = new URL(`https://hungry-food-backend.vercel.app/search/${key}`);
         url.searchParams.append("type", type);
 
         const response = await fetch(url, {
@@ -148,7 +148,7 @@ const Partner = () => {
 
   const deleteDummy = async (item) => {
     console.log(item._id);
-    let result = await fetch(`https://hungry-food-mern-stack-g4mp.vercel.app/delete/${item._id}`, {
+    let result = await fetch(`https://hungry-food-backend.vercel.app/delete/${item._id}`, {
       method: "DELETE",
     });
     result = await result.json();
@@ -195,7 +195,7 @@ const Partner = () => {
         formData.append('photo', updateformData.photo);
       }
 
-      let result = await fetch(`https://hungry-food-mern-stack-g4mp.vercel.app/update/${itemId}`, {
+      let result = await fetch(`https://hungry-food-backend.vercel.app/update/${itemId}`, {
         method: 'put',
         body: formData,
       });
@@ -271,7 +271,7 @@ const Partner = () => {
     formData.append('photo', addformData.photo);
 
     try {
-      const result = await fetch(`https://hungry-food-mern-stack-g4mp.vercel.app/upload`, {
+      const result = await fetch(`https://hungry-food-backend.vercel.app/upload`, {
         method: 'POST',
         body: formData,
       });

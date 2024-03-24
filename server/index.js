@@ -21,11 +21,10 @@ cloudinary.config({
 const Jwt = require('jsonwebtoken');
 const jwtkey = 'yummyfood';
 app.use(express.json());
+
 const corsOptions = {
     origin: 'https://hungry-food-mern-stack.vercel.app',
     optionsSuccessStatus: 200,
-    // credentials: true
-
 };
 
 app.use(cors(corsOptions));
@@ -199,7 +198,6 @@ app.get("/search/:key", async (req, resp) => {
     });
     resp.send(result);
 })
-
 
 //delete api
 app.delete("/delete/:id", async (req, resp) => {

@@ -20,7 +20,7 @@ const PartnerLogin = ({ onClose,setShowPartner}) => {
     setLoading(true);
     event.preventDefault();
     console.warn(email, password);
-    let result = await fetch(`https://hungry-food-mern-stack-g4mp.vercel.app/login`,{
+    let result = await fetch(`https://hungry-food-backend.vercel.app/login`,{
         method:'post',
         body:JSON.stringify({email,password}),            
         headers:{
