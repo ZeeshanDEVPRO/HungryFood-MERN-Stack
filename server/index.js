@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('./db/config');
 const bcrypt = require('bcrypt');
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 const User = require('./db/User');
 const Product = require('./db/Product');
 const DummyProduct = require('./db/DummyProduct');
@@ -10,12 +10,12 @@ const Partner = require('./db/Partner');
 const app = express();
 const fileUpload = require('express-fileupload');
 const cloudinary = require('cloudinary').v2;
-require('dotenv').config()
+require('dotenv').config();
 
 cloudinary.config({
-    cloud_name: "dlknzbptz",
-    api_key:"258333159144375" ,
-    api_secret:"k_t1t5GRkaWupsI50EYc4I7RLOw" 
+    cloud_name: process.env.CLOUD,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
 });
 
 const Jwt = require('jsonwebtoken');
@@ -23,18 +23,16 @@ const jwtkey = 'yummyfood';
 app.use(express.json());
 
 const corsOptions = {
-    origin: 'https://hungry-food-mern-stack.vercel.app',
+    origin: '*',
     optionsSuccessStatus: 200,
+    methods: ["GET", "POST", "PUT", "DELETE"]
 };
 
 app.use(cors(corsOptions));
 
-
 app.use(fileUpload({
     useTempFiles: true
 }));
-
-
 
 //signup api
 app.post('/register', async (req, resp) => {
@@ -199,6 +197,7 @@ app.get("/search/:key", async (req, resp) => {
     resp.send(result);
 })
 
+
 //delete api
 app.delete("/delete/:id", async (req, resp) => {
     try {
@@ -258,5 +257,10 @@ app.put("/update/:id", async (req, res) => {
         res.status(500).json({ message: "Error updating product" });
     }
 });
+
+
+app.get("/", (req, resp) => {
+    resp.send("server is running");
+})
 
 app.listen(PORT);
