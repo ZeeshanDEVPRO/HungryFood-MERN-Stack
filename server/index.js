@@ -15,7 +15,8 @@ require('dotenv').config();
 cloudinary.config({
     cloud_name: process.env.CLOUD,
     api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
+    api_secret: process.env.API_SECRET,
+    secure: true
 });
 
 const Jwt = require('jsonwebtoken');
@@ -117,7 +118,7 @@ app.post("/login", async (req, resp) => {
         resp.send({ user, auth: token });
     }
     catch (error) {
-        console.error(error); 
+        console.error(error);
         resp.status(500).send({ error: "Something went wrong" });
     }
 });
@@ -196,7 +197,6 @@ app.get("/search/:key", async (req, resp) => {
     });
     resp.send(result);
 })
-
 
 //delete api
 app.delete("/delete/:id", async (req, resp) => {

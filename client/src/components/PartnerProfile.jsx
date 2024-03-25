@@ -12,7 +12,7 @@ const PartnerProfile = ({ onClose, setShowProfile }) => {
     
     const logout = () => {
         localStorage.removeItem('partner');
-        navigate('/home');
+        window.location = "/home";
     };
 
     return (

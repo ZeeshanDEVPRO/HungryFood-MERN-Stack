@@ -40,7 +40,7 @@ const UserProfile = ({ onClose }) => {
 
   const logout = () => {
     localStorage.removeItem('user');
-    navigate('/home');
+    window.location = "/home";
   };
 
   return (
