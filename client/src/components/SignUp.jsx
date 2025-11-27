@@ -17,6 +17,7 @@ const SignUp = ({ onClose, setShowLogin, setShowSignUp }) => {
   }, []);
 
   const changeModal = () => {
+    
     setShowLogin(true);
     setShowSignUp(false);
   }
