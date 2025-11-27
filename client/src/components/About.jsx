@@ -26,7 +26,7 @@ const About = () => {
       <div className="project">
         <div className='head2'>Who am I ?</div>
         <div className="wrap">
-          <p>I am <span className='name'>Zeeshan Sayeed</span>, an undergraduate B.Tech student in <span className='name'>NIT ROURKELA</span>. I am currently a sophomore.I am well versed and passionate about coding. My skills include <span className='name'>DSA in C++, MERN stack development and Blockchain Development</span>. I am also interested in python and data science. I would look forward to gain experience in internships in big tech companies and new age startups. Check the links in the footer to reach me. </p>
+          <p>I am <span className='name'>Ritesh Chaurasiya</span>, an undergraduate B.Tech student in <span className='name'>NIT ROURKELA</span>. I am currently a sophomore.I am well versed and passionate about coding. My skills include <span className='name'>DSA in C++, MERN stack development and Blockchain Development</span>. I am also interested in python and data science. I would look forward to gain experience in internships in big tech companies and new age startups. Check the links in the footer to reach me. </p>
           <img src='https://www.nitrkl.ac.in/assets/images/about-banner.jpg' alt='image hidden' />
         </div>
       </div>
